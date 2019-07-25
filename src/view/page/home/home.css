@@ -1,0 +1,27 @@
+.ant-layout-header, .ant-layout-sider, .ant-menu-dark{
+    background: #44515f;
+}
+.ant-layout-sider-trigger{
+    background: #5B83AD;
+}
+.ant-tabs-tabpane{
+    padding: 0 10px;
+}
+.sys-name{
+    display: inline-block;
+    color: #fff;
+}
+.user-info{
+    color: #fff;
+}
+.anticon-home, .anticon-logout {
+    margin: 0 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.edit{
+    color: #0095ff;
+}
+.del{
+    color: red;
+}
