@@ -18,6 +18,10 @@ yarn build
 cd polc/server
 pm2 start index.js
 ```
+##截图  
+![image](https://github.com/yamateH-ch/polc/blob/master/static/6.png)  
+![image](https://github.com/yamateH-ch/polc/blob/master/static/3.png)
+
 ##结构说明
 ```
 ├── server  
