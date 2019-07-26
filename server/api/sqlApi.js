@@ -18,51 +18,34 @@ router.get('/login',(req,res) => {
     var username = params.username;
     var password = params.password;
     pool.getConnection(function(err, conn){
-        try {
-            if(err){
-                throw err;
-            }
-            conn.query(sql, function(err, data){
-                if (err) {
-                    res.json({
-                        code: '-200',
-                        msg:'数据异常'
-                    });
-                } else {
-                    if (typeof data === 'undefined') {
-                        res.json({
+        conn.query(sql, function(err, data){
+            if (err) {
+                return  res.json({
+                    code: '-200',
+                    msg:'数据异常'
+                });
+            } else {
+                for (let i = 0; i < data.length; i++) {
+                    if (username === data[i].username && password === data[i].password) {
+                        return res.json({
+                            code: '200',
+                            msg:'操作成功'
+                        });
+                    } else if (username === data[i].username && password !== data[i].password){
+                        return res.json({
+                            code: '-200',
+                            msg:'密码错误'
+                        });
+                    } else if (username !== data[i].username) {
+                        return res.json({
                             code: '-200',
                             msg:'用户不存在'
                         });
-                    } else {
-                        for (let i = 0; i < data.length; i++) {
-                            if (username === data[i].username && password === data[i].password) {
-                                res.json({
-                                    code: '200',
-                                    msg:'操作成功'
-                                });
-                            } else if (username === data[i].username && password !== data[i].password){
-                                res.json({
-                                    code: '-200',
-                                    msg:'密码错误'
-                                });
-                            } else if (username !== data[i].username) {
-                                res.json({
-                                    code: '-200',
-                                    msg:'用户不存在'
-                                });
-                            }
-                        }
                     }
                 }
-                conn.release(); //释放连接
-            })
-        }catch(e){
-            res.json({
-                code: '-200',
-                msg:'数据库连接异常'
-            });
-        }
+            }
+            conn.release(); //释放连接
+        })
     })
 });
 
