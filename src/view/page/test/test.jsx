@@ -1,5 +1,5 @@
-import React from 'react';
-
+import React from 'react'
+import './test.less'
 class Test extends React.Component {
     constructor(props) {
         super(props);
@@ -7,7 +7,7 @@ class Test extends React.Component {
     
     render() {
         return (
-            <div>test</div>
+            <div id="polc">test</div>
         );
     }
 }
